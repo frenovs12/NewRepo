@@ -41,12 +41,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PIDEV.Data\PIDEV.Data.csproj">
       <Project>{0703653c-7ddd-4bf3-af79-6ded258a2d68}</Project>
       <Name>PIDEV.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PIDEV.Domain\PIDEV.Domain.csproj">
+      <Project>{e0d89c01-34ac-472c-8284-1576e3b4f7da}</Project>
+      <Name>PIDEV.Domain</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
