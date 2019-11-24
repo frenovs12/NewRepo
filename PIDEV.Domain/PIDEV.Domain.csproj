@@ -51,8 +51,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
-    <Compile Include="Class2.cs" />
     <Compile Include="entities\answer.cs" />
     <Compile Include="entities\bill.cs" />
     <Compile Include="entities\competence.cs" />
