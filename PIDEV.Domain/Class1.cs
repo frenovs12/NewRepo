@@ -8,5 +8,6 @@ namespace PIDEV.Domain
 {
     public class Class1
     {
+
     }
 }
