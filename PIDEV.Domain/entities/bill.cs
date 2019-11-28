@@ -2,7 +2,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace PIDEV.Data
+namespace PIDEV.Domain
 {
     [Table("pidev.bill")]
     public partial class bill
