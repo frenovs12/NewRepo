@@ -59,6 +59,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="FilmService.cs" />
+    <Compile Include="IFilmService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -69,6 +71,10 @@
     <ProjectReference Include="..\PIDEV.Domain\PIDEV.Domain.csproj">
       <Project>{e0d89c01-34ac-472c-8284-1576e3b4f7da}</Project>
       <Name>PIDEV.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PIDEV.ServicePattern\PIDEV.ServicePattern.csproj">
+      <Project>{F589DBFA-8779-4E8C-9E44-3C27FD276DC0}</Project>
+      <Name>PIDEV.ServicePattern</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

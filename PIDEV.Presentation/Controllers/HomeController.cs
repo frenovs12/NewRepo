@@ -12,7 +12,7 @@ namespace PIDEV.Presentation.Controllers
     {
         public ActionResult Index()
         {
-            var message = new MimeMessage();
+           /* var message = new MimeMessage();
             message.From.Add(new MailboxAddress(" test project", "ons.mokni@esprit.tn"));
             message.To.Add(new MailboxAddress(" ons", "moknions@gmail.com"));
             message.Subject = "u got a +";
@@ -23,7 +23,7 @@ namespace PIDEV.Presentation.Controllers
                 client.Authenticate("ons.mokni@esprit.tn", "ibrahimamel");
                 client.Send(message);
                 client.Disconnect(true);
-            }
+            }*/
             return View();
         }
 

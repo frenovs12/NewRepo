@@ -74,11 +74,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configurations\FilmConfiguration.cs" />
+    <Compile Include="CustomConventions\DateTime2Convention.cs" />
+    <Compile Include="Infrastructures\DataBaseFactory.cs" />
+    <Compile Include="Infrastructures\Disposable.cs" />
+    <Compile Include="Infrastructures\IDataBaseFactory.cs" />
+    <Compile Include="Infrastructures\IRepositoryBase.cs" />
+    <Compile Include="Infrastructures\IUnitOfWork.cs" />
+    <Compile Include="Infrastructures\RepositoryBase.cs" />
+    <Compile Include="Infrastructures\UnitOfWork.cs" />
+    <Compile Include="MyContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PIDEV.Domain\PIDEV.Domain.csproj">
+      <Project>{E0D89C01-34AC-472C-8284-1576E3B4F7DA}</Project>
+      <Name>PIDEV.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
