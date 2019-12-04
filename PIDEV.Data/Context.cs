@@ -303,10 +303,6 @@ namespace PIDEV.Data
                 .IsUnicode(false);
 
             modelBuilder.Entity<training>()
-                .Property(e => e.subject)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<training>()
                 .HasMany(e => e.users)
                 .WithMany(e => e.trainings1)
                 .Map(m => m.ToTable("user_training").MapLeftKey("employeesTrainings_id").MapRightKey("participants_id"));
@@ -319,17 +315,11 @@ namespace PIDEV.Data
                 .Property(e => e.lastName)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<user>()
-                .Property(e => e.mail)
-                .IsUnicode(false);
 
             modelBuilder.Entity<user>()
                 .Property(e => e.password)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<user>()
-                .Property(e => e.tel)
-                .IsUnicode(false);
 
             modelBuilder.Entity<user>()
                 .Property(e => e.role)

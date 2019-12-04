@@ -38,6 +38,18 @@ namespace PIDEV.Presentation.Controllers
             return View();
         }
 
+        public ActionResult stat()
+        {
+            var t = service.GetTrainingBySubject("Soft Skills").Count();
+            var f = service.GetTrainingBySubject("Hard Skills").Count();
+
+            ViewBag.t = t;
+            ViewBag.f = f;
+
+            return View(service.GetMany().ToList());
+
+        }
+
         // GET: Training/Details/5
         public ActionResult Details(int id)
         {
@@ -78,7 +90,7 @@ namespace PIDEV.Presentation.Controllers
             HttpClient Client = new HttpClient();
             Client.BaseAddress = new Uri("http://localhost:9080/PIDev-web/");
             HttpContent content = new StringContent("");
-            Client.PostAsJsonAsync("api/trainings/add/" +t.subject+"/"+t.description + "/2019-12-12/" + t.duration + "/" + t.nbr + "/" +t.room + "/1", content).
+            Client.PostAsJsonAsync("api/trainings/add/" +t.subject+"/"+t.description + "/ 2019-12-12 /" + t.duration + "/" + t.nbr + "/" +t.room + t.trainer_id, content).
                 ContinueWith((postTask) => postTask.Result.EnsureSuccessStatusCode());
 
             return RedirectToAction("Index", "Training");

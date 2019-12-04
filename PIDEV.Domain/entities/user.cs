@@ -28,14 +28,9 @@ namespace PIDEV.Domain
         [Key]
         public int id { get; set; }
 
-        public int age { get; set; }
-
         [Column(TypeName = "date")]
         public DateTime? birthDate { get; set; }
 
-        public DateTime? datenaissance { get; set; }
-
-        public DateTime? daterecrue { get; set; }
 
         [StringLength(255)]
         public string firstName { get; set; }
@@ -44,13 +39,7 @@ namespace PIDEV.Domain
         public string lastName { get; set; }
 
         [StringLength(255)]
-        public string mail { get; set; }
-
-        [StringLength(255)]
         public string password { get; set; }
-
-        [StringLength(255)]
-        public string tel { get; set; }
 
         public int? team_id { get; set; }
 

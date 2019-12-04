@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static PIDEV.Domain.training;
 
 namespace PIDEV.Service
 {
@@ -18,9 +19,16 @@ namespace PIDEV.Service
         {
 
         }
-        public IEnumerable<training> GetTrainingByTitle(string title)
+
+        /*  public IEnumerable<training> GetTrainingByTitle(Sub title)
+ {
+
+     return GetMany(f => f.subject.Contains(title));
+ }*/
+        public IEnumerable<training> GetTrainingBySubject(string sub)
         {
-            return GetMany(f => f.subject.Contains(title));
+
+            return GetMany(c => c.subject.Equals(sub));
         }
 
     }
