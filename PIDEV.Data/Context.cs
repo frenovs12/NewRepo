@@ -1,3 +1,4 @@
+using PIDEV.Data.Configurations;
 using PIDEV.Domain;
 using System.Data.Entity;
 
@@ -34,6 +35,7 @@ namespace PIDEV.Data
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            
             modelBuilder.Entity<answer>()
                 .Property(e => e.type_reponse)
                 .IsUnicode(false);
@@ -376,6 +378,8 @@ namespace PIDEV.Data
                 .HasMany(e => e.missions)
                 .WithMany(e => e.users)
                 .Map(m => m.ToTable("user_mission"));
+
+            modelBuilder.Configurations.Add(new TrainingConfiguration());
         }
     }
 }

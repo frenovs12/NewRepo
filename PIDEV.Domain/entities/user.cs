@@ -25,7 +25,7 @@ namespace PIDEV.Domain
             projects = new HashSet<project>();
             trainings1 = new HashSet<training>();
         }
-
+        [Key]
         public int id { get; set; }
 
         public int age { get; set; }

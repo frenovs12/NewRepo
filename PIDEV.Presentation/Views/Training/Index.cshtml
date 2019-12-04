@@ -1,0 +1,77 @@
+﻿@model IEnumerable<PIDEV.Domain.training>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Back.cshtml";
+}
+    <body>
+        <h2>Index</h2>
+
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.duration)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.isCanceled)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.nbr)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.room)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.subject)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.trainer_id)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in ViewBag.result)
+            {
+                <tr>
+                    <td>
+                        @item.date
+                    </td>
+                    <td>
+                        @item.description
+                    </td>
+                    <td>
+                        @item.duration
+                    </td>
+                    <td>
+                        @item.isCanceled
+                    </td>
+                    <td>
+                        @item.nbr
+                    </td>
+                    <td>
+                        @item.room
+                    </td>
+                    <td>
+                        @item.subject
+                    </td>
+                    <td>
+                        @item.trainer_id
+                    </td>
+                    <td>
+                        @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                    </td>
+                </tr>
+            }
+
+        </table>
+        </body>
