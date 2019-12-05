@@ -1,0 +1,50 @@
+﻿
+@model List<HRManager.domain.Entities.Criterion>
+@{
+    ViewBag.Title = "Create Survey";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+</head>
+<body>
+    <!-- FormMethod.Post returns model declared in model-->
+    @using (Html.BeginForm("AddQuestion", "Surveys", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        for (int i = 0; i < Model.Count; i++)
+        {<div class="form-group">
+
+                @Html.LabelFor(x => x[i].Description, new { @class = "control-label" }) @(i + 1)
+                <div class="col-md-10">
+                    @Html.Hidden("Index", i)
+                    @Html.TextBoxFor(x => x[i].Description, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x[i].Description, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+
+
+
+        }
+        <div class="form-group">
+            <div class=" col-md-10">
+                <input type="submit" value="Create" class=" btn btn-sm btn-user btn-block float-right" />
+            </div>
+        </div>
+
+
+    }
+
+
+
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+</body>
+</html>

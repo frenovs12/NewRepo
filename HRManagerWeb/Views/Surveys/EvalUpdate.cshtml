@@ -1,0 +1,52 @@
+﻿@model HRManagerWeb.Models.evaluation
+@{
+    ViewBag.Title = "EvalUpdate";
+}
+
+<div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel">Update Evaluation</h5>
+    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">×</span>
+    </button>
+</div>
+<div class="modal-body">
+
+    @using (Html.BeginForm("EvalUpdate", "Surveys", FormMethod.Post, new { @class = "form-horizontal", id = "updateEvalForm", role = "form" }))
+    {
+        <hr /> <div class="form-group">
+            @Html.LabelFor(m => Model.DD, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => Model.DD, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => Model.DD, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => Model.DF, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => Model.DF, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => Model.DF, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Role, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.Role, new SelectList(Enum.GetValues(typeof(HRManagerWeb.Models.Role))), new { @class = "form-control" })
+            </div>
+        </div>
+       
+
+
+        @Html.HiddenFor(m => Model.E_ID)
+        @Html.HiddenFor(m => Model.DD)
+        @Html.HiddenFor(m => Model.DF)
+        @Html.HiddenFor(m => Model.Role)
+      
+    }
+
+</div>
+<div class="modal-footer">
+    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+    <button class="btn btn-primary" href="Eval.html" form="updateEvalForm">Submit</button>
+</div>
+
+

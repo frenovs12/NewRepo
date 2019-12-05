@@ -1,0 +1,54 @@
+﻿@model HRManager.domain.Entities.DayOff
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel">Ask for Day off</h5>
+    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">×</span>
+    </button>
+</div>
+<div class="modal-body">
+
+    @using (Html.BeginForm("Add", "DayOff", FormMethod.Post, new { @class = "form-horizontal", id = "AddDayOffForm", role = "form" }))
+    {
+        <hr /> <div class="form-group">
+            @Html.LabelFor(m => Model.StartDate, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.StartDate, new { @type = "date", @class = "form-control datepicker", @Value = DateTime.Today.ToString("yyyy-MM-dd"), @id = "datepicker" })
+                @Html.ValidationMessageFor(m => Model.StartDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => Model.Description, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => Model.Description, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => Model.Description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => Model.Duration, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => Model.Duration, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => Model.Duration, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Type, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.Type, new SelectList(Enum.GetValues(typeof(HRManager.domain.Entities.Type))), new { @class = "form-control" })
+            </div>
+        </div>
+
+        @Html.HiddenFor(m => m.UserId)
+
+    }
+
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+        <button class="btn btn-primary" href="login.html" form="AddDayOffForm">Submit</button>
+    </div>
+
+

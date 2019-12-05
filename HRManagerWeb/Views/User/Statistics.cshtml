@@ -1,0 +1,61 @@
+﻿@model IEnumerable<HRManagerWeb.Models.user>
+    <div style="margin-left:500px;position:center;width:1500px">
+
+        @{ 
+            ViewBag.Title = "Statistics";
+        }
+        @foreach (var item in Model)
+        {
+
+
+
+            <div class="card mb-4 col-5 shadow">
+                <div class="card-header py-3">
+                    @if (item == Model.ElementAt(0))
+                    {
+
+                        <h6 class="m-0  font-weight-bold text-primary">  <i class="fas fa-star fa-fw"></i> @Html.DisplayFor(modelItem => item.login)</h6>
+                    }
+                    else
+                    {
+                        <h6 class="m-0 font-weight-bold text-primary"> @Html.DisplayFor(modelItem => item.login)</h6>}
+
+                </div>
+
+
+                <div class="card-body">
+                    @Html.DisplayFor(model => item.workTime) Hours
+                    <div class="progress mb-4 ">
+                        @{
+                            var ratio = (item.workTime) * 100 / 280;
+                        }
+
+                        @if (item.workTime >= 280)
+                        {
+                            <div class="progress-bar progress-bar-animated" role="progressbar" style="width:@ratio%; background-color:green" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                        }
+                        else if (item.workTime >= 240 && item.workTime < 280)
+                        {
+                            <div class="progress-bar progress-bar-animated" role="progressbar" style="width:@ratio%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                        }
+                        else if (item.workTime >= 220 && item.workTime < 240)
+                        {
+                            <div class="progress-bar progress-bar-animated" role="progressbar" style="width:@ratio% ; background-color:orange" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+
+                        }
+                        else
+                        {
+                            <div class="progress-bar progress-bar-animated" role="progressbar" style="width:@ratio% ; background-color:red" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+
+                        }
+                    </div>
+                </div>
+
+            </div>
+
+
+
+        }
+
+
+    </div>

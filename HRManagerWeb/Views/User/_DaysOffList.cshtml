@@ -1,0 +1,22 @@
+﻿@model IEnumerable<HRManager.domain.Entities.DayOff>
+
+@foreach (var item in Model)
+{
+    <div class="card-body card shadow ">
+        @Html.LabelFor(ModelItem => item.State, new { @class = "col-md-4 control-label" })
+        @Html.TextBoxFor(ModelItem => item.State, new { @class = "form-control", disabled = "disabled"})
+
+        @Html.LabelFor(ModelItem => item.Description, new { @class = "col-md-4 control-label" })
+        @Html.TextBoxFor(ModelItem => item.Description, new { @class = "form-control", disabled = "disabled" })
+        @Html.LabelFor(ModelItem => item.StartDate, new { @class = "col-md-4 control-label", disabled = "disabled" })
+        @Html.TextBoxFor(ModelItem => item.StartDate, new { @class = "form-control", disabled = "disabled" })
+
+        @Html.LabelFor(ModelItem => item.Duration, new { @class = "col-md-4 control-label" })
+        @Html.TextBoxFor(ModelItem => item.Duration, new { @class = "form-control", disabled = "disabled" })
+
+    </div>
+
+}
+
+
+

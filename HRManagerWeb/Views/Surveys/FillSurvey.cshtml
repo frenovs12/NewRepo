@@ -1,0 +1,62 @@
+﻿@model HRManager.domain.Entities.Response
+@{
+    ViewBag.Title = "Fill Survey";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+</head>
+<body>
+
+    @using (Html.BeginForm("SubmitSurvey", "Surveys", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        for (int i = 0; i < Model.Survey.Criteria.Count; i++)
+        {<div class="form-group">
+
+                @Html.LabelFor(x => x.Survey.Criteria[i].Description, new { @class = "control-label" }) @(i + 1)
+                <div class="col-md-10">
+                    @Html.Hidden("Index", i)
+                    @Html.TextBoxFor(x => x.Survey.Criteria[i].Description, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.Survey.Criteria[i].Description, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-10">
+                    <div class="form-group">
+                        @Html.Label("Yes")
+                        @Html.RadioButtonFor(x => x.Survey.Criteria[i].Response, true)
+
+                        @Html.Label("No")
+                        @Html.RadioButtonFor(x => x.Survey.Criteria[i].Response, false)
+                    </div>
+
+                </div>
+            </div>
+
+
+            @Html.HiddenFor(model => model.UserId)
+            @Html.HiddenFor(model => model.Survey.SurveyId)
+            @Html.HiddenFor(model => model.Survey.Title)
+            @Html.HiddenFor(model => model.Survey.Date)
+
+
+        }
+
+        <div class="form-group">
+            <div class=" col-md-2 float-right">
+                <input type="submit" value="Submit" class="btn btn-primary " />
+            </div>
+        </div>
+    }
+
+
+
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+</body>
+</html>
+

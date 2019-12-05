@@ -1,0 +1,58 @@
+﻿@model HRManagerWeb.Models.user
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel">Update User</h5>
+    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">×</span>
+    </button>
+</div>
+<div class="modal-body">
+
+    @using (Html.BeginForm("Update", "User", FormMethod.Post, new { @class = "form-horizontal", id = "updateUserForm", role = "form" }))
+    {
+        <hr /> <div class="form-group">
+            @Html.LabelFor(m => Model.login, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => Model.login, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => Model.login, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => Model.email, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => Model.email, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => Model.email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.role, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.role, new SelectList(Enum.GetValues(typeof(HRManagerWeb.Models.Role))), new { @class = "form-control" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(m => Model.password, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.PasswordFor(m => Model.password, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => Model.password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        @Html.HiddenFor(m => Model.id)
+        @Html.HiddenFor(m => Model.created)
+        @Html.HiddenFor(m => Model.updated)
+        @Html.HiddenFor(m => Model.isActive)
+        @Html.HiddenFor(m => Model.password)
+        @Html.HiddenFor(m => Model.role)
+    }
+
+</div>
+<div class="modal-footer">
+    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+    <button class="btn btn-primary" href="login.html" form="updateUserForm">Submit</button>
+</div>
+

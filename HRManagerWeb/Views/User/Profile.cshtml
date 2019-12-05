@@ -1,0 +1,68 @@
+﻿@model HRManagerWeb.Models.user
+@{
+    ViewBag.Title = "Profile";
+
+}
+<div class="row">
+    <div class="card-body card shadow  col-6">
+        <div class="Card-header text-info"> information</div>
+        <div class="form-group">
+            @Html.LabelFor(m => Model.login, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => Model.login, new { @class = "form-control", disabled = "disabled" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => Model.email, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => Model.email, new { @class = "form-control", disabled = "disabled" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.role, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.role, new SelectList(Enum.GetValues(typeof(HRManagerWeb.Models.Role))), new { @class = "form-control", disabled = "disabled" })
+            </div>
+        </div>
+    </div>
+    <div class="col-1"></div>
+
+    @Html.HiddenFor(m => Model.id)
+    @Html.HiddenFor(m => Model.created)
+    @Html.HiddenFor(m => Model.updated)
+    @Html.HiddenFor(m => Model.isActive)
+    @Html.HiddenFor(m => Model.password)
+    @Html.HiddenFor(m => Model.role)
+
+    <div class="card-body card shadow  col-4">
+        <div class="Card-header text-info"> Days Off History </div>
+        <div>
+            <a class="btn btn-primary align-bottom  bottom" style="float:right" href="#" id="edit_@Model.id" onclick="createModal('@Url.Action("AskForDayOff", "DayOff" , new {id=Model.id })')">
+                <i class="fas fa-door-open fa-sm fa-fw mr-2 text-gray-400"></i>
+                Ask for day off
+            </a>
+        </div>
+        <div class="form-group">
+            @Html.Action("_DaysOffList", "User")
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="modal fade" id="dayOffModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style=" max-width:800px;" role="document">
+        <div id="modalContent" class="modal-content">
+
+        </div>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
+<script>
+    function createModal(url) {
+        $('#modalContent').load(url);
+        $('#dayOffModal').modal('show');
+    }
+</script>
+
